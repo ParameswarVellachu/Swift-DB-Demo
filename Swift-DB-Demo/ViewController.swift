@@ -176,21 +176,15 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
                     do {
                         let documentDirectory = URL(fileURLWithPath: strFolder)
 
-//                        strFolder = strFolder.appending("/note\(nSelectedIndex).txt")
-
                         let originPath = documentDirectory.appendingPathComponent("note\(i + 1).txt")
                         print(originPath)
                         let destinationPath = documentDirectory.appendingPathComponent("note\(i).txt")
                         print(destinationPath)
                         
                         try FileManager.default.moveItem(at: originPath, to: destinationPath)
-                    } catch {
-                        print(error)
-                    }
+                    } catch {   print(error)  }
                 }
-                
             }
-            
             self.tableNotes.reloadData()
             
         } catch let error as NSError
